@@ -1,11 +1,16 @@
 FROM ubuntu
 
-RUN apt-get -y update
-RUN apt install -y apt-utils software-properties-common \
-		apt-transport-https ca-certificates man-db curl
-RUN apt-get install -y python3 python3-pip
-RUN pip3 install numpy && \
-		pip3 install matplotlib && \
-		pip3 install tensorflow && \
-		pip3 install gym && \
-		pip3 install jupyter
+ARG DEBIAN_FRONTEND=noninteractive
+ARG HOME_DIR="/home/undefined"
+ARG MNT_DIR="$HOME_DIR/loc"
+
+RUN apt-get -y update && \
+    apt-get -y --no-install-recommends upgrade && \
+    apt-get install -y --no-install-recommends apt-utils software-properties-common \
+      apt-transport-https ca-certificates man-db curl python3 python3-pip
+
+RUN useradd -d $HOME_DIR --shell /bin/bash --create-home --skel /etc/skel --user-group undefined
+USER undefined:undefined
+WORKDIR $MNT_DIR
+
+RUN pip3 install numpy matplotlib pandas tensorflow torch torchvision gym jupyter
