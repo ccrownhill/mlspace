@@ -1,4 +1,4 @@
-# AI Container Workspace Environment
+# MLSPACE - A Container for ML in Python
 
 This container contains everything necessary for doing Machine Learning with Python and Jupyter Notebooks.
 
