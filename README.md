@@ -1,4 +1,4 @@
-# Container Workspace Environment for all stuff AI related
+# AI Container Workspace Environment
 
 This container contains everything necessary for doing Machine Learning with Python and Jupyter Notebooks.
 
